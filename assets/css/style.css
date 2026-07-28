@@ -36,21 +36,35 @@ body
 
 
 
+
+
+
+/* Paineis */
+.panel
+{
+    padding: 25px;
+    min-height: 70vh;
+}
+.panel__title
+{
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blur);
+    text-shadow: 0 0 8px var(--dourado_branco);
+}
 .glass-panel
 {
 
     background: rgba(26, 51, 78, 0.15); 
 
-    /* Desfoque do fundo que estiver passando por trás */
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
 
     border-radius: 25px;
 
-    /* A borda fina e clara simula a borda cortada do vidro */
     border: 1px solid var(--dourado_branco);
 
-    /* Sombra leve para dar profundidade de elevação */
     box-shadow: 0 8px 32px 0 rgba(255, 239, 167, 0.65);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -64,6 +78,9 @@ body
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
 
 }
+
+
+
 
 
 
@@ -95,7 +112,7 @@ body
 .page-header_nav a
 {
     text-decoration: none;
-    color: white;
+    color: var(--cinza_chumbo);
     font-size: 1.1rem;
     padding-bottom: 5px;
     border-bottom: 2px solid transparent;
@@ -128,7 +145,7 @@ body
 .mobile-nav-container
 {
     display: none;
-    background: var(--azul_escuro);
+    background: var(--blur);
     backdrop-filter: blur(var(--blur));
     -webkit-backdrop-filter: blur(var(--blur));
     border-radius: 25px;
@@ -137,7 +154,7 @@ body
     padding: 20px;
     margin: 0 20px 20px;
 }
-.mobile_nav_container ul
+.mobile-nav-container ul
 {
     list-style: none;
     padding: 0;
@@ -156,11 +173,158 @@ body
     }
 }
 
-/* Fim Header */
+
+
+
+
+
+
+
+
+/* Conteúdo dos paineis */
+
+.content-topic 
+{
+    display: none;
+}
+.content-topic.is-active 
+{
+    display: block;
+}
+.content-topic__title 
+{
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+.content-topic__subtitle 
+{
+    font-size: 1.4rem;
+    color: var(--text-light);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.content-topic__text 
+{
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+
+
+
+
+
+
+/* Ícones dos paineis */
+
+.icon-set 
+{
+  display: none;
+}
+.icon-set.is-active 
+{
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0.2;
+  overflow: hidden;
+}
+.icon-set__icon 
+{
+  position: absolute;
+  width: 100px;
+  height: auto;
+  animation: moveShape 25s ease-in-out infinite alternate;
+  filter: invert(1) opacity(0.5);
+}
+.icon-set__icon:nth-child(1) 
+{ 
+    top: 10%; 
+    left: 15%; 
+    animation-duration: 20s; 
+}
+.icon-set__icon:nth-child(2) 
+{ 
+    top: 50%; 
+    left: 60%; 
+    animation-duration: 30s; 
+}
+.icon-set__icon:nth-child(3) 
+{ 
+    top: 70%; 
+    left: 20%; 
+    animation-duration: 25s; 
+}
+@keyframes moveShape 
+{
+  from 
+  { 
+      transform: translate(20%, 30%) rotate(0deg); 
+  }
+  to 
+  { 
+      transform: translate(60%, 70%) rotate(180deg); 
+  }
+}
+
+
+
+
+
+
+
 
 /* Conteiners de Conteúdo */
 
+.page-container
+{
+    display: grid;
+    color: var(--cinza_chumbo);
 
+    grid-template-columns: 200px 1fr 280px;
+    gap: 25px;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+
+
+
+
+
+
+
+/* Painel a diretita do principal */
+
+.topics-menu 
+{
+  list-style: none;
+}
+.topics-menu__link 
+{
+  display: block;
+  padding: 12px 15px;
+  border-radius: 12px;
+  color: var(--cinza_chumbo);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.topics-menu__link:hover 
+{
+  background: var(--branco);
+  color: var(--cinza_chumbo);
+}
+
+.topics-menu__link.is-active {
+  background: var(--dourado);
+  color: var(--cinza_chumbo);
+  font-weight: 700;
+}
 
 /* Parte de copyright */
 
@@ -180,4 +344,159 @@ body
 {
     text-decoration: underline;
     color: var(--dourado);
+}
+
+
+
+
+
+
+
+
+
+
+/* Painel "Diferencial" */
+
+.full-width-container 
+{
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 25px 25px 25px; 
+}
+.diferenciais-grid 
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+}
+.diferencial-card 
+{
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--dourado_branco);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    opacity: 0; 
+    transform: translateX(40px);
+}
+.diferencial-card__title 
+{
+    font-size: 1.15rem;
+    color: var(--azul_escuro);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+.diferencial-card__text 
+{
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--cinza_chumbo);
+}
+
+
+@keyframes rolarParaEsquerda 
+{
+    to 
+    {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#painel-diferenciais.is-visible .diferencial-card 
+{
+    animation: rolarParaEsquerda 0.6s ease-out forwards;
+}
+
+#painel-diferenciais.is-visible .diferencial-card:nth-child(1) { animation-delay: 0.1s; }
+#painel-diferenciais.is-visible .diferencial-card:nth-child(2) { animation-delay: 0.25s; }
+#painel-diferenciais.is-visible .diferencial-card:nth-child(3) { animation-delay: 0.4s; }
+#painel-diferenciais.is-visible .diferencial-card:nth-child(4) { animation-delay: 0.55s; }
+#painel-diferenciais.is-visible .diferencial-card:nth-child(5) { animation-delay: 0.7s; }
+#painel-diferenciais.is-visible .diferencial-card:nth-child(6) { animation-delay: 0.85s; }
+
+
+
+
+
+
+
+
+
+/* Para Celulares */
+
+@media (max-width: 1200px) 
+{
+  .page-container 
+  {
+    grid-template-columns: 220px 1fr 220px;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 992px) 
+{
+  .page-container 
+  {
+    grid-template-columns: 1fr;
+  }
+  .panel--left 
+  {
+    display: none;
+  }
+  .panel 
+  {
+    min-height: auto;
+  }
+
+}
+
+@media (max-width: 768px) 
+{
+  body 
+  {
+    background-attachment: scroll;
+    padding-bottom: 60px;
+  }
+
+  .page-container 
+  {
+    padding: 10px;
+  }
+
+  .page-header 
+  {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .content-topic__title 
+  {
+    font-size: 1.8rem;
+  }
+
+  .content-topic__subtitle 
+  {
+    font-size: 1.2rem;
+  }
+
+  .content-topic__text 
+  {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .page-footer 
+  {
+    position: static;
+  }
+}
+@media (max-width: 768px) 
+{
+    .diferenciais-grid 
+    {
+        grid-template-columns: 1fr;
+    }
 }
